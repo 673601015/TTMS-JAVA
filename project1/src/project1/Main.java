@@ -79,27 +79,22 @@ public class Main {
 		frame1.getContentPane().setLayout(null);
 		JPanel panel=new JPanel();
 		panel.setLayout(null);
-//		frame.setUndecorated(true);
 
 		text1 = new JTextField();
 		text1.setBounds(115, 111, 117, 21);
-//		frame1.getContentPane().add(text1);
 		text1.setColumns(10);
 
 		text2 = new JPasswordField();
 		text2.setBounds(115, 142, 117, 21);
-//		frame1.getContentPane().add(text2);
 		text2.setColumns(10);
 
 		JLabel label = new JLabel("账号");
 		label.setFont(new Font("仿宋", Font.BOLD, 15));
 		label.setBounds(70, 114, 54, 15);
-//		frame1.getContentPane().add(label);
 
 		JLabel label_1 = new JLabel(" 密码");
 		label_1.setFont(new Font("仿宋", Font.BOLD, 15));
 		label_1.setBounds(61, 136, 44, 32);
-//		frame1.getContentPane().add(label_1);
 
 		JButton btnNewButton = new JButton("登录");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -107,18 +102,15 @@ public class Main {
 				if(!(text1.getText().toString().matches("[0-9a-zA-Z]{6,}")
 						&&new String(text2.getPassword()).matches("[0-9a-zA-z]{6,}")))
 				{
-					//System.out.println(text2.getPassword().toString());
 					JOptionPane.showMessageDialog(null, "账号或密码错误");
 					return ;
 				}
 				
 				user1=new User(text1.getText().toString()+"@"+_version, new String(text2.getPassword()));
 				new Login();
-//				new Form2();
 			}
 		});
 		btnNewButton.setBounds(115, 197, 129, 32);
-//		frame1.getContentPane().add(btnNewButton);
 
 		JButton button = new JButton("退出");
 		button.addActionListener(new ActionListener() {
@@ -127,7 +119,6 @@ public class Main {
 			}
 		});
 		button.setBounds(115, 239, 129, 32);
-//		frame1.getContentPane().add(button);
 		panel.setBounds(0, 0, FrameWide, FrameHight);
 		panel.add(text1);
 		panel.add(text2);

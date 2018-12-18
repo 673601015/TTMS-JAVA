@@ -33,9 +33,6 @@ public class Form8 {
 	JComboBox comboBox_2 = new JComboBox();
 	private JTextField textField_1;
 	private Form3 father;
-//	private Choice comboxchoice=new Choice();
-//	private Choice comboxchoice1=new Choice();
-//	private Choice comboxchoice2=new Choice();
 	/**
 	 * Launch the application.
 	 */
@@ -115,11 +112,8 @@ public class Form8 {
 				comboBox.removeAllItems();
 				Get_All_Movie_Name();
 				Get_All_PreformanceID();
-//				comboBox_1.removeAll();
-//				comboBox_2.removeAll();
 				for (String[] str1 : Form3.getmovie.getalist()) {
 					comboBox.addItem(str1[0]);
-//					comboxchoice.add(str1[0]);
 				}
 			}
 		});

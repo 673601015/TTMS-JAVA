@@ -44,55 +44,26 @@ public class Response extends Thread {
 			os = client.getOutputStream();
 			oos = new ObjectOutputStream(os);
 			ServerMain.oosList.add(oos);
-			// ois = new ObjectInputStream(is);
 			reader = new BufferedReader(new InputStreamReader(is,"GBK"));
-//			reader = new BufferedReader(new InputStreamReader(is));
-			// reader=new BufferedReader(new
-			// InputStreamReader(socket.getInputStream()));
 			pw = new PrintWriter(os);
-			// heartTime=System.currentTimeMillis();
 			String msg;
 			isOnlie();
 			System.out.println("用户:" + user1.getUsername() + "登录成功");
 			while (Useronline) {
-				// reader=new BufferedReader(new
-				// InputStreamReader(client.getInputStream()));
-				// System.out.println("wating");
 				if (!Useronline)
 					break;
 				if (lock)
 					continue;
 				msg = reader.readLine();
-				// if(msg.compareTo("Heart")!=0)
-				// {
-				// num++;
-				// System.out.println("请求次数"+num);
-				// }
-				// System.out.println("用户:" + user1.getUsername() + "发送指令:" +
-				// msg);
-//				Response_Msg newresponse = new Response_Msg(this, msg);
-//				newresponse.start();
 				respos(msg);
-				// newresponse.join(1100);
-				// newresponse.interrupt();
 				Thread.sleep(50);
 			}
-			// is.close();
-			// os.close();
-			// oos.close();
-			// client.close();
-			// Sql_Main.User_Offline(user1);
-			// System.out.println("用户" + user1.getUsername() + "离线");
 			userOffline(oos);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			 e.printStackTrace();
 
 		}
-		// catch (ClassNotFoundException e) {
-		// // TODO Auto-generated catch block
-		// // e.printStackTrace();
-		// }
 		catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,17 +76,7 @@ public class Response extends Thread {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
-				// System.out.println("并发"+(System.currentTimeMillis()-Response.heartTime));
-				// System.out.println(System.currentTimeMillis());
-				// System.out.println(Response.heartTime);
-				// if((System.currentTimeMillis()-Response.heartTime)>heartMaxTime)
-				// {
-				// Useronline=false;
-				// System.out.println("1111");
-				// System.out.println("结束"+(System.currentTimeMillis()-Response.heartTime));
-				// online.cancel();
-				// }
+			
 				if(!Sql_Main.User_Isline(user1))
 				{
 					heartTime = false;
@@ -142,8 +103,7 @@ public class Response extends Thread {
 				client.close();
 				ServerMain.oosList.remove(ServerMain.oosList.indexOf(oos));
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				// e1.printStackTrace();
+				e1.printStackTrace();
 			}
 			Sql_Main.User_Offline(user1);
 			System.out.println("用户" + user1.getUsername() + "离线");
@@ -192,9 +152,7 @@ public class Response extends Thread {
 						break;
 					}
 				}
-				// break;
 			case "Delete_User":
-				// ois=new ObjectInputStream(client.getInputStream());
 				User olduser;
 				olduser = (User) ois.readObject();
 				if ((user1.getPermission().compareTo("0") != 0 || Sql_Main.Get_Permission(olduser).compareTo("0") == 0)
@@ -216,7 +174,6 @@ public class Response extends Thread {
 				}
 				// break;
 			case "Ban_User":
-				// ois=new ObjectInputStream(client.getInputStream());
 				User newBanuser;
 				newBanuser = (User) ois.readObject();
 				if ((user1.getPermission().compareTo("0") != 0
@@ -239,9 +196,7 @@ public class Response extends Thread {
 						break;
 					}
 				}
-				// break;
 			case "Offline_User":
-				// ois=new ObjectInputStream(client.getInputStream());
 				User newOfflineuser;
 				newOfflineuser = (User) ois.readObject();
 				if ((user1.getPermission().compareTo("0") != 0
@@ -266,7 +221,6 @@ public class Response extends Thread {
 					}
 				}
 			case "User_Baned_Cancel":
-				// ois=new ObjectInputStream(client.getInputStream());
 				User newCancelBaneduser;
 				newCancelBaneduser = (User) ois.readObject();
 				if ((user1.getPermission().compareTo("0") != 0
@@ -300,7 +254,6 @@ public class Response extends Thread {
 				oos.writeObject(new Get_TB_ArrayList(Sql_Main.Get_Plan()));
 				break;
 			case "Get_TB_AllUser":
-				// System.out.println(o.getClass()+"===="+ oos);
 				oos.writeObject(new Get_TB_ArrayList(Sql_Main.Get_AllUer()));
 				break;
 			case "Get_All_Movie_Name":
@@ -424,7 +377,6 @@ public class Response extends Thread {
 			case "Heart":
 				pw.println("Online");
 				pw.flush();
-				// heartTime = System.currentTimeMillis();
 				if (Sql_Main.User_Isline(user1))
 					heartTime = true;
 				else {
@@ -440,7 +392,6 @@ public class Response extends Thread {
 				}
 				break;
 			default:
-				// clean_Socket_Input();
 				byte[] by = new byte[1];
 				try {
 					while (is.read(by) != -1)
@@ -460,230 +411,6 @@ public class Response extends Thread {
 
 	}
 }
-
-//class Response_Msg extends Thread {
-//	Response response;
-//	String msg;
-//
-//	public Response_Msg(Response response, String msg) {
-//		this.response = response;
-//		this.msg = msg;
-//	}
-//
-//	public void clean_Socket_Input() {
-//		byte[] by = new byte[1];
-//		try {
-//			while (response.is.read(by) != -1)
-//				;
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	public void run() {
-//		response.lock = true;
-//		try {
-//
-//			switch (msg) {
-//			case "ModifyPassword":
-//				User_Msg us1 = (User_Msg) response.ois.readObject();
-//				if (ServerMain.sqlmain.Modify_Password(us1.us, us1.msg)) {
-//					System.out.println("用户:" + us1.us.getUsername() + "修改密码为:" + us1.msg);
-//					response.pw.println("True");
-//					response.pw.flush();
-//				} else {
-//					response.pw.println("False");
-//					response.pw.flush();
-//				}
-//
-//				break;
-//			case "Add_User":
-//				User newUser = (User) response.ois.readObject();
-//				System.out.println("用户:" + response.user1.getUsername() + "添加用户:" + newUser.getUsername() + "密码"
-//						+ newUser.getPassword() + "新用户权限:" + newUser.getPermission());
-//				if (newUser.getPermission().compareTo("0") == 0
-//						&& response.user1.getPermission().compareTo("999") != 0) {
-//					response.pw.println("Permission Denied");
-//					response.pw.flush();
-//					break;
-//				} else if ((response.user1.getPermission().compareTo("0") != 0)
-//						&& response.user1.getPermission().compareTo("999") != 0) {
-//					response.pw.println("Permission Denied");
-//					response.pw.flush();
-//					break;
-//				} else {
-//					if (Sql_Main.Add_User(newUser)) {
-//						response.pw.println("Add User Successfully ");
-//						response.pw.flush();
-//						break;
-//					} else {
-//						response.pw.println("Add User Failed");
-//						response.pw.flush();
-//						break;
-//					}
-//				}
-//				// break;
-//			case "Delete_User":
-//				// ois=new ObjectInputStream(client.getInputStream());
-//				User olduser;
-//				olduser = (User) response.ois.readObject();
-//				if ((response.user1.getPermission().compareTo("0") != 0
-//						|| Sql_Main.Get_Permission(olduser).compareTo("0") == 0)
-//						&& response.user1.getPermission().compareTo("999") != 0) {
-//					response.pw.println("Permission Denied");
-//					response.pw.flush();
-//					break;
-//				} else {
-//					if (Sql_Main.Delete_User(olduser)) {
-//						System.out.println(
-//								"管理员:" + response.user1.getUsername() + " 删除用户" + olduser.getUsername() + "成功");
-//						response.pw.println("Delete User Successfully ");
-//						response.pw.flush();
-//						break;
-//					} else {
-//						response.pw.println("Delete User Failed");
-//						response.pw.flush();
-//						break;
-//					}
-//				}
-//				// break;
-//			case "Ban_User":
-//				// ois=new ObjectInputStream(client.getInputStream());
-//				User newBanuser;
-//				newBanuser = (User) response.ois.readObject();
-//				if ((response.user1.getPermission().compareTo("0") != 0
-//						|| Sql_Main.Get_Permission(newBanuser).compareTo("0") == 0)
-//						&& response.user1.getPermission().compareTo("999") != 0) {
-//					response.pw.println("Permission Denied");
-//					response.pw.flush();
-//					break;
-//				}
-//
-//				else {
-//					if (Sql_Main.User_BAN(newBanuser)) {
-//						System.out.println(
-//								"管理员:" + response.user1.getUsername() + " 封禁用户" + newBanuser.getUsername() + "成功");
-//						response.pw.println("Ban User Successfully ");
-//						response.pw.flush();
-//						break;
-//					} else {
-//						response.pw.println("Ban User Failed");
-//						response.pw.flush();
-//						break;
-//					}
-//				}
-//				// break;
-//			case "Offline_User":
-//				// ois=new ObjectInputStream(client.getInputStream());
-//				User newOfflineuser;
-//				newOfflineuser = (User) response.ois.readObject();
-//				if ((response.user1.getPermission().compareTo("0") != 0
-//						|| Sql_Main.Get_Permission(newOfflineuser).compareTo("0") == 0)
-//						&& response.user1.getPermission().compareTo("999") != 0) {
-//					response.pw.println("Permission Denied");
-//					response.pw.flush();
-//					break;
-//				}
-//
-//				else {
-//					if (Sql_Main.User_Offline(newOfflineuser)) {
-//						System.out.println("管理员:" + response.user1.getUsername() + " 强制下线用户"
-//								+ newOfflineuser.getUsername() + "成功");
-//						response.pw.println("Offline User Successfully ");
-//						response.pw.flush();
-//						break;
-//					} else {
-//						response.pw.println("Offline User Failed");
-//						response.pw.flush();
-//						break;
-//					}
-//				}
-//			case "User_Baned_Cancel":
-//				// ois=new ObjectInputStream(client.getInputStream());
-//				User newCancelBaneduser;
-//				newCancelBaneduser = (User) response.ois.readObject();
-//				if ((response.user1.getPermission().compareTo("0") != 0
-//						|| Sql_Main.Get_Permission(newCancelBaneduser).compareTo("0") == 0)
-//						&& response.user1.getPermission().compareTo("999") != 0) {
-//					response.pw.println("Permission Denied");
-//					response.pw.flush();
-//					break;
-//				}
-//
-//				else {
-//					if (Sql_Main.User_BANED_Cancel(newCancelBaneduser)) {
-//						System.out.println("管理员:" + response.user1.getUsername() + " 解封用户"
-//								+ newCancelBaneduser.getUsername() + "成功");
-//						response.pw.println("Successfully ");
-//						response.pw.flush();
-//						break;
-//					} else {
-//						response.pw.println("Failed");
-//						response.pw.flush();
-//						break;
-//					}
-//				}
-//			case "Get_TB_MOVIE":
-//				response.oos.writeObject(new Get_TB_ArrayList(Sql_Main.Get_Movie()));
-//				break;
-//			case "Get_TB_Preformance":
-//				response.oos.writeObject(new Get_TB_ArrayList(Sql_Main.Get_Preformance()));
-//				break;
-//			case "Get_TB_Plan":
-//				response.oos.writeObject(new Get_TB_ArrayList(Sql_Main.Get_Plan()));
-//				break;
-//			case "Get_TB_AllUser":
-//				// System.out.println(o.getClass()+"===="+response.oos);
-//				response.oos.writeObject(new Get_TB_ArrayList(Sql_Main.Get_AllUer()));
-//				break;
-//
-//			case "Change_Ticket":
-//				String Plan_ID = response.reader.readLine();
-//				String newSeat = response.reader.readLine();
-//				if (Sql_Main.Change_Ticket(Plan_ID, newSeat)) {
-//					response.pw.println("Successfully");
-//					response.pw.flush();
-//				} else {
-//					response.pw.println("Failed");
-//					response.pw.flush();
-//				}
-//				break;
-//			case "Heart":
-//				// System.out.println("heart");
-//				response.pw.println("Online");
-//				response.pw.flush();
-//				Thread.sleep(50);
-//				
-//				// response.heartTime = System.currentTimeMillis();
-//				if (Sql_Main.User_Isline(response.user1))
-//					response.heartTime = true;
-//				else {
-//					response.heartTime = false;
-//				}
-//				break;
-//			default:
-//				// clean_Socket_Input();
-//				byte[] by = new byte[1];
-//				try {
-//					while (response.is.read(by) != -1)
-//						;
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				break;
-//			}
-//			// Thread.sleep(50);
-//		} catch (ClassNotFoundException | IOException | InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		response.lock = false;
-//	}
-//
-//}
-
 class Get_TB_ArrayList implements Serializable {
 
 	/**

@@ -79,14 +79,6 @@ public class Form5 {
 		this.Plan_ID=Plan_ID;
 		Seat_ID=0;
 		InitSeat();
-//		seat1=new ImageIcon("D://eclipse//project1//src//seat1.png");
-//		seat2=new ImageIcon("D://eclipse//project1//src//seat2.png");
-//		seat3=new ImageIcon("D://eclipse//project1//src//seat3.png");
-//		seat4=new ImageIcon("D://eclipse//project1//src//seat4.png");
-//		JOptionPane.showMessageDialog(null, Form5.class.getResource("/"));
-		
-//		Selectedseat="";
-//		System.out.println(rows+"    "+columns+"  "+seat );
 		initialize();
 	}
 	/**
@@ -99,23 +91,6 @@ public class Form5 {
 
 		JPanel panel = new JPanel();
 		
-		//panel.setLayout(new GridLayout(0, columns));
-//		panel.setLayout(new GridLayout(0, 5));
-//		panel.setBounds(10, 69, 598, 493);
-//		for (int i = 0,m=seat.length(); i<m; i++) {
-//			if(seat.charAt(i)=='2')
-//			{
-//				panel.add(new JBtton_myjb(seat3, 2));
-//			}
-//			else if(seat.charAt(i)=='1')
-//			{
-//				panel.add(new JBtton_myjb(seat1, 1));
-//			}
-//			else
-//			{
-//				panel.add(new JBtton_myjb(seat4, 0));
-//			}
-//		}
 		
 		frame.getContentPane().add(panel);
 		repaintPanel(panel);
@@ -186,7 +161,6 @@ public class Form5 {
 		frame.setBounds(100, 100, 800, 600);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.addWindowListener(new WindowListener() {
 
@@ -246,9 +220,6 @@ public class Form5 {
 		Seat_ID=0;
 		InitSeat();
 		repaintPanel(panel);
-//		System.out.println(Form5.seat);
-//		System.out.println(Form5.Selectedseat);
-//		System.out.println(Form5.Cancelseat);
 		isflush=false;
 	}
 	public void repaintPanel(JPanel panel)
@@ -272,7 +243,6 @@ public class Form5 {
 		}
 //		panel.setVisible(true);
 		panel.repaint();
-//		frame.repaint();
 		frame.setVisible(true);
 	}
 	public static void InitSeat()
@@ -439,18 +409,14 @@ class JBtton_myjb extends JButton
 	}
 	public void set_Color1()
 	{
-//		Form5.button1.setVisible(true);
-//		Form5.button2.setVisible(false);
 		if(flag)
 		{
-			//this.setBackground(Color.GREEN);
 			Form5.Selectedseat=Form5.Selectedseat.substring(0,ID)+"1"+Form5.Selectedseat.substring(ID+1);
 			this.setIcon(Form5.seat2);
 			flag=false;
 		}
 		else
 		{
-			//this.setBackground(Color.red);
 			Form5.Selectedseat=Form5.Selectedseat.substring(0,ID)+"0"+Form5.Selectedseat.substring(ID+1);
 			this.setIcon(Form5.seat1);
 			flag=true;
@@ -458,18 +424,14 @@ class JBtton_myjb extends JButton
 	}
 	public void set_Color2()
 	{
-//		Form5.button1.setVisible(false);
-//		Form5.button2.setVisible(true);
 		if(flag)
 		{
-			//this.setBackground(Color.GREEN);
 			Form5.Cancelseat=Form5.Cancelseat.substring(0,ID)+"1"+Form5.Cancelseat.substring(ID+1);
 			this.setIcon(Form5.seat2);
 			flag=false;
 		}
 		else
 		{
-			//this.setBackground(Color.red);
 			Form5.Cancelseat=Form5.Cancelseat.substring(0,ID)+"0"+Form5.Cancelseat.substring(ID+1);
 			this.setIcon(Form5.seat3);
 			flag=true;

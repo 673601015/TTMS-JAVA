@@ -26,18 +26,9 @@ public class Form1 {
 	private JPasswordField passwordField;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		
-//	}
-
-	/**
 	 * Create the application.
 	 */
 	public Form1() {
-//	    Mainform window = new Mainform();
-//		window.frame.setVisible(true);
 		initialize();
 	}
 
@@ -105,7 +96,6 @@ public class Form1 {
 		frame.setBounds(100, 100, 400, 320);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 	}
@@ -113,11 +103,9 @@ public class Form1 {
 	{
 		
 		try {
-//			Login.pw=new PrintWriter(Login.socket.getOutputStream());
 			Login.pw.println("ModifyPassword");
 			Login.pw.flush();
 			Thread.sleep(50);
-//			Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
 			Login.oos.writeObject(new User_Msg(Main.user1, txtA.getText().toString()));
 			Login.oos.flush();
 			Thread.sleep(50);
@@ -141,31 +129,3 @@ public class Form1 {
 	}
 }
 
-//class Add_User extends Thread {
-//	public Add_User() {
-//
-//	}
-//
-//	public void run() {
-//		try {
-//			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-//			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
-//			Login.pw.println("Add_User");
-//			Login.pw.flush();
-//			Thread.sleep(50);
-//			Login.oos.writeObject(
-//					new User(Form1.textField.getText().toString(), Form1.textField_1.getText().toString()));
-//			Login.oos.flush();
-//			// Login.socket.shutdownOutput();
-//			Form1.str = Login.reader.readLine();
-//			// JOptionPane.showMessageDialog(null, str);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return;
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//}

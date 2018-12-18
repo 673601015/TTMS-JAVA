@@ -104,8 +104,6 @@ public class Form3 {
 		frame.getContentPane().setLayout(null);
 		model = new DefaultTableModel() {
 			public boolean isCellEditable(int row, int column) {
-				// if(column==4)return true;
-				// else
 				return false;
 			}
 
@@ -113,10 +111,6 @@ public class Form3 {
 				if (columnIndex == 3) {
 					// return ImageIcon.class;
 				}
-				// if(columnIndex==4)
-				// {
-				// return JButton.class;
-				// }
 				return Object.class;
 
 			}
@@ -141,18 +135,6 @@ public class Form3 {
 		button_3.setVisible(false);
 		frame.getContentPane().add(button_5);
 		button_10.setVisible(false);
-		// table.setDefaultRenderer(JButton.class, new ComboBoxCellRenderer());
-		// Vector row=new Vector();
-		// Vector colum=new Vector();
-
-		// model.setDataVector(new Object[][]{
-		//// {"毛驴历险记","刘吉吉","毛驴","250",new JButton(new ImageIcon(JButton_url))}
-		// {"","","","",new JButton(JButton_ImageIcon)}
-		// },
-		// new String[]{
-		// "电影名称","导演","主演","票价",""});
-		// table.getColumnModel().getColumn(4).setCellRenderer(new
-		// ComboBoxCellRenderer());
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (flag == 0) {
@@ -168,13 +150,8 @@ public class Form3 {
 					}
 				} else if (flag == 2) {
 					if (table.getValueAt(table.getSelectedRow(), 8) != null && table.getSelectedColumn() == 8) {
-						// JOptionPane.showMessageDialog(null, "获取详细信息");
-						// new Form5(Form3.columns, Form3.rows, Form3.seat);
 						int index = table.getSelectedRow();
 						String[] str = getmovie.getalist().get(index);
-//						for (String string : str) {
-//							System.out.println(string);
-//						}
 						new Form5(Integer.valueOf(str[4]), Integer.valueOf(str[5]), str[6], getthis(),
 								table.getValueAt(table.getSelectedRow(), 0).toString());
 					}
@@ -189,9 +166,6 @@ public class Form3 {
 				}
 			}
 		});
-		// table.setBounds(87, 296, 454, 222);
-
-		// frame.getContentPane().add(table);
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(128, 88, 662, 446);
@@ -207,20 +181,6 @@ public class Form3 {
 		});
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// model.addRow(new Object[]{"11111","22222","33333","44444",new
-				// JButton(new ImageIcon(JButton_url))});
-//				btnNewButton_2.setEnabled(true);
-//				btnNewButton_3.setEnabled(true);
-//				btnNewButton.setEnabled(false);
-//				button.setEnabled(true);
-//				button_1.setEnabled(true);
-////				button_3.setEnabled(true);
-//				button_5.setVisible(false);
-//				button_2.setVisible(true);
-//				button_4.setVisible(false);
-//				button_6.setVisible(false);
-//				button_3.setVisible(false);
-//				button_7.setVisible(false);
 
 				Get_Movie_Data();
 
@@ -243,18 +203,6 @@ public class Form3 {
 		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				btnNewButton_2.setEnabled(false);
-//				btnNewButton_3.setEnabled(true);
-//				btnNewButton.setEnabled(true);
-//				button.setEnabled(true);
-//				button_1.setEnabled(true);
-//				button_3.setVisible(false);
-//				button_5.setVisible(true);
-//				button_2.setVisible(false);
-//				button_4.setVisible(false);
-//				button_6.setVisible(false);
-//				button_7.setVisible(false);
 				Get_AllUser_Data();
 				
 			}
@@ -266,17 +214,6 @@ public class Form3 {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Get_Preformance_Data();
-//				btnNewButton_2.setEnabled(true);
-//				btnNewButton_3.setEnabled(true);
-//				btnNewButton.setEnabled(true);
-//				button.setEnabled(false);
-//				button_1.setEnabled(true);
-//				button_3.setVisible(true);
-//				button_5.setVisible(false);
-//				button_2.setVisible(false);
-//				button_4.setVisible(false);
-//				button_6.setVisible(false);
-//				button_7.setVisible(true);
 			}
 		});
 		button.setBounds(6, 187, 112, 23);
@@ -286,17 +223,6 @@ public class Form3 {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				btnNewButton_2.setEnabled(true);
-//				btnNewButton_3.setEnabled(true);
-//				btnNewButton.setEnabled(true);
-//				button.setEnabled(true);
-//				button_1.setEnabled(false);
-//				button_3.setVisible(false);
-//				button_5.setVisible(false);
-//				button_2.setVisible(false);
-//				button_4.setVisible(true);
-//				button_6.setVisible(true);
-//				button_7.setVisible(false);
 				Get_Plan_Data();
 			}
 		});
@@ -362,14 +288,6 @@ public class Form3 {
 				Server_Maintenance_Fin();
 			}
 		});
-//		btnNewButton.setVisible(false);
-//		btnNewButton_1.setVisible(false);
-//		btnNewButton_2.setVisible(false);
-//		button.setVisible(false);
-//		button_1.setVisible(false);
-//		button_2.setVisible(false);
-//		button_3.setVisible(false);
-//		button_4.setVisible(false);
 		button_8.setVisible(false);
 		button_9.setVisible(false);
 		switch (Main.user1.getPermission()) {
@@ -463,27 +381,13 @@ public class Form3 {
 		flag = 0;
 		model.setDataVector(
 				new Object[][] {
-						// {"毛驴历险记","刘吉吉","毛驴","250",new JButton(new
-						// ImageIcon(JButton_url))}
 						{ "", "", "", "", new JButton(JButton_ImageIcon) } },
 				new String[] { "电影名称", "导演", "主演", "票价", "" });
 		table.getColumnModel().getColumn(4).setCellRenderer(new ComboBoxCellRenderer());
-		// table.addMouseListener(new MouseAdapter() {
-		// public void mouseClicked(MouseEvent e)
-		// {
-		// if(table.getValueAt(table.getSelectedRow(),4)!=null&&table.getSelectedColumn()==4)
-		// {
-		// JOptionPane.showMessageDialog(null,
-		// "查看电影"+table.getValueAt(table.getSelectedRow(),0));
-		// }
-		// }
-		// });
 		try {
-			// System.out.println(model.getRowCount());
 			for (int i = 0, m = model.getRowCount(); i < m; i++) {
 				model.removeRow(0);
 			}
-			// System.out.println(model.getRowCount());
 			Login.pw.println("Get_TB_MOVIE");
 			Login.pw.flush();
 			Thread.sleep(50);
@@ -491,23 +395,9 @@ public class Form3 {
 			Get_TB_ArrayList getmovie = (Get_TB_ArrayList) Login.ois.readObject();
 			Thread.sleep(50);
 			for (String[] string : getmovie.getalist()) {
-				// String Moviename=res.getString("moviename");
-				// String Director=res.getString("director");
-				// String Staring=res.getString("staring");
-				// String Pirce=res.getString("price");
 				model.addRow(
 						new Object[] { string[0], string[1], string[2], string[3], new StringJButton(string, "查看信息") });
 			}
-			// ResultSet res=getmovie.getRes();
-			// while(res.next())
-			// {
-			// String Moviename=res.getString("moviename");
-			// String Director=res.getString("director");
-			// String Staring=res.getString("staring");
-			// String Pirce=res.getString("price");
-			// model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new
-			// JButton(new ImageIcon(JButton_url))});
-			// }
 
 		} catch (IOException | InterruptedException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -515,8 +405,6 @@ public class Form3 {
 			JOptionPane.showMessageDialog(null, "未知异常,请重新登录");
 			System.exit(0);
 		}
-//		Login.num++;
-//		System.out.println("次数"+Login.num);
 		Login.lock=false;
 	}
 	public ArrayList<String[]> Getmov_Sort(ArrayList<String[]> list)
@@ -554,17 +442,6 @@ public class Form3 {
 		model.setDataVector(new Object[][] { { "", "", "", "", new JButton(new ImageIcon(JButton_url)) } },
 				new String[] { "演出厅号", "座位行数", "座位列数", "可用座位数量", "" });
 		table.getColumnModel().getColumn(4).setCellRenderer(new ComboBoxCellRenderer());
-		// table.addMouseListener(new MouseAdapter() {
-		// public void mouseClicked(MouseEvent e)
-		// {
-		//
-		// if(table.getValueAt(table.getSelectedRow(),4)!=null&&table.getSelectedColumn()==4)
-		// {
-		// JOptionPane.showMessageDialog(null,
-		// "查看电影"+table.getValueAt(table.getSelectedRow(),0));
-		// }
-		// }
-		// });
 		try {
 			for (int i = 0, m = model.getRowCount(); i < m; i++) {
 				model.removeRow(0);
@@ -725,24 +602,9 @@ public class Form3 {
 		flag = 2;
 		model.setDataVector(
 				new Object[][] {
-						// {"毛驴历险记","刘吉吉","毛驴","250",new JButton(new
-						// ImageIcon(JButton_url))}
 						{ "", "", "", "", "", "", "", "", new JButton(new ImageIcon(JButton_url)) } },
 				new String[] { "ID", "电影名", "放映时间", "演出厅号", "座位行数", "座位列数", "剩余座位", "票价", "" });
 		table.getColumnModel().getColumn(8).setCellRenderer(new ComboBoxCellRenderer());
-		// table.addMouseListener(new MouseAdapter() {
-		// public void mouseClicked(MouseEvent e)
-		// {
-		// if(table.getValueAt(table.getSelectedRow(),8)!=null&&table.getSelectedColumn()==8)
-		// {
-		// JOptionPane.showMessageDialog(null, "获取详细信息");
-		// //new Form5(Form3.columns, Form3.rows, Form3.seat);
-		// int index=table.getSelectedRow();
-		// String[] str=getmovie.getalist().get(index);
-		// new Form5(Integer.valueOf(str[4]),Integer.valueOf(str[5]),str[6]);
-		// }
-		// }
-		// });
 		try {
 			for (int i = 0, m = model.getRowCount(); i < m; i++) {
 				model.removeRow(0);
@@ -767,19 +629,7 @@ public class Form3 {
 		}
 		Login.lock=false;
 	}
-//	public Get_TB_ArrayList readobject()
-//	{
-//		try {
-//			return  (Get_TB_ArrayList) Login.ois.readObject();
-//		} catch (ClassNotFoundException | IOException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("重试");
-//			return readobject();
-//		}
-//	}
 	public void Get_AllUser_Data() {
-		//while(true)
-		//{
 		if(Login.lock)return;
 		Login.lock=true;
 		btnNewButton_2.setEnabled(false);
@@ -807,7 +657,6 @@ public class Form3 {
 			Thread.sleep(50);
 	 
 			 getmovie = (Get_TB_ArrayList) Login.ois.readObject();
-//			Get_TB_ArrayList getmovie = readobject();
 			Thread.sleep(50);
 			for (String[] string : getmovie.getalist()) {
 				if(string[2].compareTo("999")==0)continue;
@@ -820,25 +669,13 @@ public class Form3 {
 		} catch (InterruptedException | ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-//			byte[] by = new byte[1];
-//			try {
-//				while (Login.is.read(by) != -1)
-//					;
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
 			JOptionPane.showMessageDialog(null, "未知异常，请重新登录");
 			System.exit(0);
 		}
-//		Login.num++;
-//		System.out.println("次数"+Login.num);
 		Login.lock=false;
 		//}
 	}
 	public void Get_Sale_Data() {
-		//while(true)
-		//{
 		if(Login.lock)return;
 		Login.lock=true;
 		flag=999;
@@ -856,7 +693,6 @@ public class Form3 {
 		button_10.setVisible(false);
 		model.setDataVector(new Object[][] { { "", "", "", "" ,""} },
 				new String[] {"演出计划ID", "销售数量", "交易金额", "交易类型","交易时间" });
-//		table.getColumnModel().getColumn(4).setCellRenderer(new ComboBoxCellRenderer());
 		try {
 			for (int i = 0, m = model.getRowCount(); i < m; i++) {
 				model.removeRow(0);
@@ -972,9 +808,6 @@ class ComboBoxCellRenderer implements TableCellRenderer {
 			button.setBorder(noFocusBorder);
 		}
 		return button;
-
-		// TODO Auto-generated method stub
-		// return null;
 	}
 
 }

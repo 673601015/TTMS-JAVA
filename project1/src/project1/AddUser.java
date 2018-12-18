@@ -98,7 +98,6 @@ public class AddUser {
 		JButton btnNewButton = new JButton("确认增加");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.showMessageDialog(null, "" + comboBox.getSelectedItem());
 				if(!(textField.getText().toString().matches("[0-9a-zA-Z]{6,}")
 						&&new String(textField_1.getText()).matches("[0-9a-zA-z]{6,}")))
 				{
@@ -135,8 +134,6 @@ class Add_User extends Thread {
 
 	public void run() {
 		try {
-			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
 			Login.pw.println("Add_User");
 			Login.pw.flush();
 			Thread.sleep(50);
@@ -160,11 +157,9 @@ class Add_User extends Thread {
 			Login.oos.writeObject(newuser);
 			Login.oos.flush();
 			Thread.sleep(50);
-			// Login.socket.shutdownOutput();
 			 String str = Login.reader.readLine();
 			 JOptionPane.showMessageDialog(null, ""+str);
 			 adduser._instance().frame.dispose();
-			// JOptionPane.showMessageDialog(null, str);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

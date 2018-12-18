@@ -60,12 +60,6 @@ public class Sql_Main {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-//		try {
-//			res=sql.executeQuery("select * from tb_User");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 	public static boolean True_User(User us1)
 	{
@@ -151,7 +145,7 @@ public class Sql_Main {
 	{
 		try {
 			res=sql.executeQuery("select permission from tb_User where username=\""
-					+use1.getUsername()+"\"");//and password=\""+use1.getPassword()+"\"");
+					+use1.getUsername()+"\"");
 			while(res.next())
 			{
 				return res.getString("permission");
@@ -166,7 +160,7 @@ public class Sql_Main {
 	{
 		try {
 			res=sql.executeQuery("select * from tb_Performance where ID=\""
-					+Performance_ID+"\"");//and password=\""+use1.getPassword()+"\"");
+					+Performance_ID+"\"");
 			String str="";
 			while(res.next())
 			{
@@ -222,7 +216,7 @@ public class Sql_Main {
 				return true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-//				e.printStackTrace();
+				e.printStackTrace();
 				Delete_User_lock=false;
 				return false;
 			}
@@ -341,7 +335,6 @@ public class Sql_Main {
 				String story=res.getString("story");
 				String[]strings={Moviename,Director,Staring,Pirce,story};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -362,7 +355,6 @@ public class Sql_Main {
 				String Moviename=res.getString("moviename");
 				String[]strings={Moviename};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -385,7 +377,6 @@ public class Sql_Main {
 				String str4=res.getString("seat");
 				String[]strings={str1,str2,str3,str4};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -405,7 +396,6 @@ public class Sql_Main {
 				String str1=res.getString("ID");
 				String[]strings={str1};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -433,7 +423,6 @@ public class Sql_Main {
 				String str8=res.getString("price");
 				String[]strings={str1,str2,str3,str4,str5,str6,str7,str8};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -457,7 +446,6 @@ public class Sql_Main {
 				String str4=res.getString("online");
 				String[]strings={str1,str2,str3,str4};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -483,7 +471,6 @@ public class Sql_Main {
 				String str6=res.getString("Date");
 				String[]strings={str1,str2,str3,str4,str5,str6};
 				alist.add(strings);
-				//model.addRow(new Object[]{Moviename,Director,Staring,Pirce,new JButton(new ImageIcon(JButton_url))});
 			}
 			
 		} catch (SQLException e) {
@@ -500,25 +487,21 @@ public class Sql_Main {
 		String seat=Get_Sale_Seat(Plan_ID);
 		if(seat==null)
 		{
-//			System.out.println("3333");
 			Change_Ticket_lock = false;
 			return false;
 		}
 		if(Get_Sale_Number(FlagSeat)==0)
 		{
-//			System.out.println("3333");
 			Change_Ticket_lock = false;
 			return false;
 		}
 		if(!Sale_Te(FlagSeat,seat, Flag))
 		{
-//			System.out.println("1111");
 			Change_Ticket_lock = false;
 			return false;
 		}
 		if(Plan_ID==null)
 		{
-//			System.out.println("2222");
 			Change_Ticket_lock = false;
 			return false;
 		}
@@ -538,7 +521,7 @@ public class Sql_Main {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			 e.printStackTrace();
 			Change_Ticket_lock = false;
 		}
 		Change_Ticket_lock = false;
@@ -553,7 +536,6 @@ public class Sql_Main {
     		{
     			if(Seat1.charAt(i)=='1'&&Seat2.charAt(i)=='2')
     				{
-//    				System.out.println(Seat1+"@@@"+Seat2);
     				return false;
     				}
     		}
@@ -565,10 +547,7 @@ public class Sql_Main {
     		{
     			if(Seat1.charAt(i)=='1'&&Seat2.charAt(i)=='1')
     			{
-    				{
-//        				System.out.println(Seat1+"@@@"+Seat2);
-        				return false;
-        				}
+        			return false;
     			}
     		}
     		return true;
@@ -584,7 +563,7 @@ public class Sql_Main {
     public static String Get_Sale_Seat(String PlanID)
 	{
 		try {
-			res=sql.executeQuery("select seat from tb_Plan where ID=\""+PlanID+"\"");//and password=\""+use1.getPassword()+"\"");
+			res=sql.executeQuery("select seat from tb_Plan where ID=\""+PlanID+"\"");
 			while(res.next())
 			{
 				return res.getString("seat");
@@ -611,8 +590,6 @@ public class Sql_Main {
 		Add_Sale_lock = true;
 		try {
 			int result;
-//			result = sql.executeUpdate("update tb_Plan set seat=\"" + newSeat + "\" where ID=\"" + Plan_ID + "\"");
-//			System.out.println("11111");
 			String ID=Get_Sale_ID();
 			String Price=Get_PlanPrice(Plan_ID);
 			if(ID==null||Price==null)
@@ -631,7 +608,6 @@ public class Sql_Main {
 			SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
 			String date_Str="1900-1-1";
 			date_Str=tempDate.format(new Date());
-//			System.out.println(ID+"@@@"+Plan_ID+"@@@"+number+"@@@"+price+"@@@"+type);
 			result = sql.executeUpdate("insert into tb_Sale values(\""+ID+"\""+",\""
 			+Plan_ID+"\","
 			+"\""+number+"\",\""+price+"\",\""+type+"\",\""+date_Str+"\")");
@@ -654,7 +630,7 @@ public class Sql_Main {
     public static String Get_Sale_ID()
 	{
 		try {
-			res=sql.executeQuery("select ID from tb_Sale_ID");//and password=\""+use1.getPassword()+"\"");
+			res=sql.executeQuery("select ID from tb_Sale_ID");
 			while(res.next())
 			{
 				return res.getString("ID");
@@ -668,7 +644,7 @@ public class Sql_Main {
     public static String Get_PlanPrice(String PlanID)
 	{
 		try {
-			res=sql.executeQuery("select price from tb_Plan where ID=\""+PlanID+"\"");//and password=\""+use1.getPassword()+"\"");
+			res=sql.executeQuery("select price from tb_Plan where ID=\""+PlanID+"\"");
 			while(res.next())
 			{
 				return res.getString("price");
@@ -687,7 +663,6 @@ public class Sql_Main {
     	if(Modify_Performance_Seat_lock)return false;
     	Modify_Performance_Seat_lock=true;
     	try {
-//    		System.out.println(Performance_ID+"..."+Performance_newSeat);
     		int result;
 			result=sql.executeUpdate("update tb_Performance set seat=\""+Performance_newSeat+"\""
 					+", Rows=\""+Performace_Rows+"\""
@@ -700,11 +675,10 @@ public class Sql_Main {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Modify_Performance_Seat_lock=false;
 		}
     	try {
-//    		System.out.println(Performance_ID+"..."+Performance_newSeat);
     		int result;
 			result=sql.executeUpdate("insert into tb_Performance values(\""+Performance_ID+"\""
 					+", \""+Performace_Rows+"\""
@@ -717,7 +691,7 @@ public class Sql_Main {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Modify_Performance_Seat_lock=false;
 		}
     	Modify_Performance_Seat_lock=false;
@@ -731,7 +705,7 @@ public class Sql_Main {
 			sql.executeUpdate("update tb_User set online=\"2\" where username=\""+user.getUsername()+"\"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			User_BAN_lock=false;
 			return false;
 		}
@@ -746,12 +720,6 @@ public class Sql_Main {
     	Modify_Plan_lock=true;
     	int result;
     	try {
-//    		System.out.println(Performance_ID+"..."+Performance_newSeat);
-    		
-//    		result=sql.executeUpdate("update tb_Performance set seat=\""+Performance_newSeat+"\""
-//					+", Rows=\""+Performace_Rows+"\""
-//					+", Columns=\""+Performance_Columns+"\""
-//					+" where ID=\""+Performance_ID+"\"");
 			result=sql.executeUpdate("update tb_Plan set Moviename=\""+MovieName+"\""
 					+", Time=\""+Time+"\""
 					+", Performance=\""+PerformanceID+"\""
@@ -765,7 +733,6 @@ public class Sql_Main {
 				Modify_Plan_lock=false;
 				return true;
 				}
-//    		System.out.println(Performance_ID+"..."+Performance_newSeat);
     		result=sql.executeUpdate("insert into tb_Plan values(\""+Plan_ID+"\""
 					+",\""+MovieName+"\""
 					+",\""+Time+"\""
@@ -782,7 +749,7 @@ public class Sql_Main {
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Modify_Plan_lock=false;
 		}
     	Modify_Plan_lock=false;
@@ -796,7 +763,7 @@ public class Sql_Main {
 			sql.executeUpdate("Delete from tb_Plan where ID=\""+Plan_ID+"\"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Del_Plan_lock=false;
 			return false;
 		}
@@ -811,7 +778,7 @@ public class Sql_Main {
    			sql.executeUpdate("Delete from tb_Movie where moviename=\""+Movie_Name+"\"");
    		} catch (SQLException e) {
    			// TODO Auto-generated catch block
-//   			e.printStackTrace();
+   			e.printStackTrace();
    			Del_Movie_lock=false;
    			return false;
    		}
@@ -826,7 +793,7 @@ public class Sql_Main {
 			sql.executeUpdate("Delete from tb_Performance where ID=\""+Performance_ID+"\"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Del_Performance_lock=false;
 			return false;
 		}
@@ -842,7 +809,7 @@ public class Sql_Main {
 			sql.executeUpdate("update tb_User set online=\"0\" where username=\""+user.getUsername()+"\"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			User_BANED_Cancel_lock=false;
 			return false;
 		}
@@ -857,7 +824,7 @@ public class Sql_Main {
 			sql.executeUpdate("update tb_Server set online=\"0\"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Server_Maintenance_lock=false;
 			return false;
 		}
@@ -872,7 +839,7 @@ public class Sql_Main {
 			sql.executeUpdate("update tb_Server set online=\"1\"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			Server_Maintenance_lock=false;
 			return false;
 		}

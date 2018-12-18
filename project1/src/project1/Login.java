@@ -43,20 +43,12 @@ public class Login {
 			is =socket.getInputStream();
 			pw = new PrintWriter(os);
 			oos = new ObjectOutputStream(os);
-			// oos.writeObject(Main.user1);
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream(),"GBK"));
-			// ois=new ObjectInputStream(socket.getInputStream());
 			Login_oos loos = new Login_oos();
 			Login.oos.writeObject(Main.user1);
 			Login.oos.flush();
 			Thread.sleep(50);
 			Login.str = Login.reader.readLine();
-//			loos.start();
-//			loos.join(500);
-//			loos.interrupt();
-			// str=reader.readLine();
-//			Thread.sleep(50);
-//			System.out.println(str);
 			if(str.compareTo("This User BANED")==0)
 			{
 				JOptionPane.showMessageDialog(null, "账号已被封禁，请联系管理员");
@@ -104,11 +96,8 @@ public class Login {
 				JOptionPane.showMessageDialog(null, "登录成功，您的权限是:" + Main.user1.getPermission());
 				Thread.sleep(50);
 				ois = new ObjectInputStream(socket.getInputStream());
-//				oos = new ObjectOutputStream(os);
 				HeartTime=System.nanoTime();
 				Heart();
-				// new Form1();
-				// new Form2();
 				new Form3();
 				Main.frame1.dispose();
 			} else {

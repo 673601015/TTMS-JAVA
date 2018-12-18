@@ -60,9 +60,6 @@ public class Form6 {
 		frame.setTitle("增加电影");
 		frame.setBounds(100, 100, 400, 361);
 		frame.getContentPane().setLayout(null);
-		// JFileChooser jfchooser=new JFileChooser();
-		// jfchooser.setBounds(290, 12, 20, 21);
-		// frame.getContentPane().add(jfchooser);
 		JLabel lblNewLabel = new JLabel("电影名称:");
 		lblNewLabel.setBounds(40, 40, 65, 15);
 
@@ -175,9 +172,6 @@ public class Form6 {
 				}
 			}
 		});
-//		textField_5.setHorizontalAlignment(JTextField.TOP);
-//		textField_5.setHorizontalAlignment(JTextField.LEFT);
-//		textField_5.setHorizontalAlignment(JTextField.LEADING);
 		btnNewButton_1.setBounds(124, 292, 93, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		frame.setResizable(false);
@@ -218,10 +212,6 @@ public class Form6 {
 	}
 
 	public boolean TextisNULL() {
-		// if(textField==null)
-		// {
-		// return true;
-		// }
 		if (textField_1 == null) {
 			return true;
 		}

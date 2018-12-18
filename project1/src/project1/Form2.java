@@ -48,41 +48,6 @@ public class Form2 {
 		frame.setTitle("用户管理");
 		frame.getContentPane().setLayout(null);
 
-//		JButton btnNewButton = new JButton("添加用户");
-//		btnNewButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if (!textField.getText().toString().matches("[0-9a-zA-Z]{6,}"))// "[0-9a-zA-Z]{6}"
-//				{
-//					JOptionPane.showMessageDialog(null, "账号格式错误" + textField.getText().toString());
-//					return;
-//				}
-//				if (!textField_1.getText().toString().matches("[0-9a-zA-Z]{6,}")) {
-//					JOptionPane.showMessageDialog(null, "密码格式错误");
-//					return;
-//				}
-//				if (textField_2.getText().toString().compareTo(textField_1.getText().toString()) != 0) {
-//					JOptionPane.showMessageDialog(null, "两次输入不一致");
-//					return;
-//				}
-//				Add_User adduser = new Add_User();
-//
-//				try {
-//					adduser.start();
-//					adduser.join(500);
-//					adduser.interrupt();
-//					JOptionPane.showMessageDialog(null, str);
-//					str = "null";
-//				} catch (InterruptedException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//
-//				// Add_User();
-//			}
-//		});
-//		btnNewButton.setBounds(10, 259, 93, 23);
-//		frame.getContentPane().add(btnNewButton);
-
 		btnNewButton_1 = new JButton("删除用户");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,14 +75,6 @@ public class Form2 {
 		frame.getContentPane().add(label_3);
 
 		JLabel label_4 = new JLabel("      ");
-//		label_4.addMouseListener(new MouseAdapter() {
-//			public void mouseClicked(MouseEvent e) {
-//				if (e.getClickCount() == 2) {
-//					Form1.frame.setVisible(true);
-//					frame.dispose();
-//				}
-//			}
-//		});
 		label_4.setBounds(119, 14, 113, 23);
 		label_4.setText(""+username);
 		frame.getContentPane().add(label_4);
@@ -139,7 +96,6 @@ public class Form2 {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				// Delete_User();
 			}
 		});
 		button.setBounds(23, 113, 93, 23);
@@ -206,40 +162,10 @@ public class Form2 {
 		frame.setBounds(100, 100, 400, 320);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 	}
 }
-
-//class Add_User extends Thread {
-//	public Add_User() {
-//
-//	}
-//
-//	public void run() {
-//		try {
-//			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-//			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
-//			Login.pw.println("Add_User");
-//			Login.pw.flush();
-//			Thread.sleep(50);
-//			Login.oos.writeObject(
-//					new User(Form2.textField.getText().toString(), Form2.textField_1.getText().toString()));
-//			Login.oos.flush();
-//			// Login.socket.shutdownOutput();
-//			Form2.str = Login.reader.readLine();
-//			// JOptionPane.showMessageDialog(null, str);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return;
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//}
 
 class Delete_User extends Thread {
 	public Delete_User() {
@@ -248,16 +174,12 @@ class Delete_User extends Thread {
 
 	public void run() {
 		try {
-			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
 			Login.pw.println("Delete_User");
 			Login.pw.flush();
 			Thread.sleep(50);
 			Login.oos.writeObject(new User(Form2.username, "111111"));
 			Login.oos.flush();
 			Thread.sleep(50);
-			// System.out.println(Form2.textField.getText().toString());
-			// Login.socket.shutdownOutput();
 			Form2.str = Login.reader.readLine();
 
 		} catch (IOException e) {
@@ -278,16 +200,12 @@ class Ban_User extends Thread {
 
 	public void run() {
 		try {
-			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
 			Login.pw.println("Ban_User");
 			Login.pw.flush();
 			Thread.sleep(50);
 			Login.oos.writeObject(new User(Form2.username, "111111"));
 			Login.oos.flush();
 			Thread.sleep(50);
-			// System.out.println(Form2.textField.getText().toString());
-			// Login.socket.shutdownOutput();
 			Form2.str = Login.reader.readLine();
 
 		} catch (IOException e) {
@@ -308,16 +226,12 @@ class Ban_User_Cancel extends Thread {
 
 	public void run() {
 		try {
-			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
 			Login.pw.println("User_Baned_Cancel");
 			Login.pw.flush();
 			Thread.sleep(50);
 			Login.oos.writeObject(new User(Form2.username, "111111"));
 			Login.oos.flush();
 			Thread.sleep(50);
-			// System.out.println(Form2.textField.getText().toString());
-			// Login.socket.shutdownOutput();
 			Form2.str = Login.reader.readLine();
 
 		} catch (IOException e) {
@@ -338,16 +252,12 @@ class Offline_User extends Thread {
 
 	public void run() {
 		try {
-			// Login.pw=new PrintWriter(Login.socket.getOutputStream());
-			// Login.oos=new ObjectOutputStream(Login.socket.getOutputStream());
 			Login.pw.println("Offline_User");
 			Login.pw.flush();
 			Thread.sleep(50);
 			Login.oos.writeObject(new User(Form2.username, "111111"));
 			Login.oos.flush();
 			Thread.sleep(50);
-			// System.out.println(Form2.textField.getText().toString());
-			// Login.socket.shutdownOutput();
 			Form2.str = Login.reader.readLine();
 
 		} catch (IOException e) {

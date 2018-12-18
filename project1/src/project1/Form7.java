@@ -28,12 +28,6 @@ public class Form7 {
 	private String Performance_ID;
 	private String title;
 	private int NewPerformance_ID;
-	// Form5.rows = Integer.valueOf(data[1]);
-	// Form5.columns = Integer.valueOf(data[2]);
-	// Form5.seat = data[3];
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -247,7 +241,6 @@ public class Form7 {
 		Form5.Seat_ID = 0;
 		Form5.InitSeat();
 		repaintPanel(panel);
-		// System.out.println("data[0]"+data[0]+"data[1]"+data[1]+"data[2]"+data[2]);
 	}
 	public void Add_Rows(JPanel panel)
 	{
@@ -279,16 +272,6 @@ public class Form7 {
 		Form5.columns++;
 		Form5.InitSeat();
 		FlushForm(panel);
-//		int index;
-//		for(int i=Form5.rows;i>0;i--)
-//		{
-//			index=i*Form5.columns;
-//			index--;
-//			Form5.seat=Form5.seat.substring(0,index)+"1"+Form5.seat.substring(index);
-//		}
-//		Form5.columns++;
-//		Form5.InitSeat();
-//		repaintPanel(panel);
 	}
 	public void Del_Columns(JPanel panel)
 	{
@@ -305,8 +288,6 @@ public class Form7 {
 		panel.removeAll();
 		panel.setLayout(new GridLayout(0, Form5.columns));
 		panel.setBounds(10, 69, 598, 493);
-//		System.out.println(Form5.seat);
-//		Form5.Seat_ID=0;
 		for (int i = 0, m = Form5.seat.length(); i < m; i++) {
 			if (Form5.seat.charAt(i) == '2') {
 				panel.add(new JBtton_myjb1(Form5.seat3, 2));
@@ -316,9 +297,7 @@ public class Form7 {
 				panel.add(new JBtton_myjb1(seat5, 0));
 			}
 		}
-		// panel.setVisible(true);
 		panel.repaint();
-		// frame.repaint();
 		frame.setVisible(true);
 	}
 
@@ -344,11 +323,8 @@ public class Form7 {
 
 		if (!Form5.SelectedseatNull()) {
 			ChangeSeat(Form5.Selectedseat, 0);
-			// System.out.println(Form5.Selectedseat+"aaa");
 		} else {
-			// System.out.println(Cancelseat);
 			ChangeSeat(Form5.Cancelseat, 1);
-			// System.out.println(Form5.Cancelseat+"bbb");
 		}
 
 	}
@@ -441,8 +417,6 @@ class JBtton_myjb1 extends JButton {
 	}
 
 	public void set_Color1() {
-		// Form5.button1.setVisible(true);
-		// Form5.button2.setVisible(false);
 		if (flag) {
 			// this.setBackground(Color.GREEN);
 			Form5.Selectedseat = Form5.Selectedseat.substring(0, ID) + "1" + Form5.Selectedseat.substring(ID + 1);
@@ -457,15 +431,11 @@ class JBtton_myjb1 extends JButton {
 	}
 
 	public void set_Color2() {
-		// Form5.button1.setVisible(false);
-		// Form5.button2.setVisible(true);
 		if (flag) {
-			// this.setBackground(Color.GREEN);
 			Form5.Cancelseat = Form5.Cancelseat.substring(0, ID) + "1" + Form5.Cancelseat.substring(ID + 1);
 			this.setIcon(Form5.seat2);
 			flag = false;
 		} else {
-			// this.setBackground(Color.red);
 			Form5.Cancelseat = Form5.Cancelseat.substring(0, ID) + "0" + Form5.Cancelseat.substring(ID + 1);
 			this.setIcon(Form7.seat5);
 			flag = true;

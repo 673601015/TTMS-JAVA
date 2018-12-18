@@ -20,14 +20,11 @@ public class ServerMain {
 	private String Server_Version = "0.8.1";
 	private String Client_Version = "0.8.1";
 	private int port = 8888;
-	// private BufferedReader reader;
 	private ServerSocket server;
 	private Socket socket;
 	private InputStream is;
 	private ObjectInputStream ois;
 	public static ArrayList<ObjectOutputStream> oosList;
-	// private OutputStream os;
-	// private ObjectOutputStream oos;
 	private PrintWriter pw;
 	private User us1;
 	public static Sql_Main sqlmain;
@@ -43,14 +40,12 @@ public class ServerMain {
 			while (true) {
 				System.out.println("Waiting");
 				socket = server.accept();
-				// socket.setTcpNoDelay(true);
 				is = socket.getInputStream();
 				ois = new ObjectInputStream(is);
 				us1 = (User) ois.readObject();
 				// Thread.sleep(50);
 				System.out.println("\n username:" + us1.getUsername() + "\n password:" + us1.getPassword());
 				pw = new PrintWriter(socket.getOutputStream());
-				// if(us1.getUsername().compareTo("aaaa")==0&&us1.getPassword().compareTo("bbbb")==0)
 				boolean flag = true;
 				String[] version = us1.getUsername().split("@");
 				us1.setUsername(version[0]);
@@ -72,13 +67,10 @@ public class ServerMain {
 								flag = false;
 							}
 						}
-						// us1.setUsername(version[0]);
 						if (!flag) {
 							pw.println("The version is too old,Please Update");
 							pw.flush();
 							System.out.println("Version Error");
-							// for(int
-							// i=0;i<version.length;i++)System.out.println(version[i]);
 						} else if (sqlmain.True_User(us1)) {
 							if (Sql_Main.User_BANED(us1)) {
 								pw.println("This User BANED");
